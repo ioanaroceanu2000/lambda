@@ -18,7 +18,7 @@ logger.setLevel(logging.DEBUG)
 
 """ --- VAlidatioan and action functions --- """
 
-def validate_book_appointment(meeting_date, meeting_time, meeting_duration, participant, meeting_title):
+def validate_schedule_meeting(meeting_date, meeting_time, meeting_duration, participant, meeting_title):
     #TODO
     """
     if meeting_date <= yesterday:
@@ -54,7 +54,7 @@ def book_meeting(intent_request):
     if source == 'DialogCodeHook':
         # Perform basic validation on the supplied input slots.
         slots = intent_request['currentIntent']['slots']
-        validation_result = validate_book_appointment(meeting_date, meeting_time, meeting_duration, participant, meeting_title)
+        validation_result = validate_schedule_meeting(meeting_date, meeting_time, meeting_duration, participant, meeting_title)
         if not validation_result['isValid']:
             slots[validation_result['violatedSlot']] = None
             return elicit_slot(
